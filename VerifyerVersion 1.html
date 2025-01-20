@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAKE EMAIL and URL CHECKER</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            text-align: center;
+            background: #ffffff;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 1rem;
+            font-size: 1rem;
+        }
+
+        .pass {
+            color: green;
+        }
+
+        .fail {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>FAKE EMAIL and URL CHECKER</h1>
+        <p>Check your URL. Cut and paste it here:</p>
+        <input type="text" id="urlInput" placeholder="Enter URL or email">
+        <button onclick="checkURL()">TEST URL</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function checkURL() {
+            const input = document.getElementById('urlInput');
+            const result = document.getElementById('result');
+            const url = input.value.trim();
+
+            if (!url) {
+                result.innerHTML = '<span class="fail">Please enter a URL or email.</span>';
+                return;
+            }
+
+            // Get decimal Unicode values of each character
+            const charCodes = Array.from(url).map(char => char.charCodeAt(0));
+            const charCodesStr = charCodes.join(', ');
+
+            // Check if all characters are in the allowed ASCII range
+            const isValid = charCodes.every(code => 
+                (code >= 46 && code <= 122 && (code < 58 || code > 63)) || code === 64
+            );
+
+            // Display results
+            if (isValid) {
+                result.innerHTML = `<span>Character codes: ${charCodesStr}</span><br><span class="pass">PASS</span>`;
+            } else {
+                result.innerHTML = `<span>Character codes: ${charCodesStr}</span><br><span class="fail">FAIL</span>`;
+            }
+
+            // Clear input for subsequent checks
+            input.value = '';
+        }
+    </script>
+</body>
+</html>

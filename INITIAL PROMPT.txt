@@ -1,0 +1,70 @@
+INITIAL PROMPT
+
+
+Can you give me the code for an html page, with a little CSS to make it pretty,
+and what ever JavaScript, python or flask  you need to make it work.
+
+It would function as 
+A verifier that a URL   is not a fraudulent version of an existing businesses address.
+
+
+Based on the concept that true URLs are made up of the decimal equivalents of  "ASCII " characters a to z upper and lowercase. plus the "." dot (45)and the "@"(64).  In other words "ASCHII"  range chr 46 to 122, excluding 58 to 63. Include 64 "@" so that emails could also be checked
+
+and fraudulent URLs contain Unicode characters from other  languages, like Cyrillic, that appear similar 
+but are outside this range.
+
+And as I understand it Ascii was incorporated into the Unicode character sets used to day at the beginning, so this should work
+
+The page would have  a large bold title "FAKE EMAIL and URL CHECKER".
+
+then the statement "Check your URL. Cut and paste it Here"
+then an input box, for the user to  cut and paste a suspect apps URL
+
+Then a button that says "TEST URL"
+
+The app would return the decimal equivalent numbers in Unicode of each character, in a comma separated line to save space
+
+and the evaluate if each were in the equivalent Ascii good range.
+
+and state either "PASS"   or FAIL
+
+
+
+Hitting the button again would clear the old URL.
+
+So after loading the program 
+
+
+If I cut and pasted Doge.com
+
+I would get
+
+68,111,103,101,46,99,111,109,
+
+PASS
+
+
+
+if I entered:
+
+DОge.com 
+
+It would catch that Cyrillic "o"  and 
+
+
+
+return 
+
+68,486,103,101,46,99,486,109,
+
+and return ""FAIL
+
+my examples may not be perfect but are meant to demons68,111,103,101,46,99,111,109,
+demonstrate the concept.
+
+First comment on the validity of my idea.
+
+Then  ask me questions if you need to, go to code, in a single  html file with imbedded CSS and JS , when you have what you need.
+
+
+-
